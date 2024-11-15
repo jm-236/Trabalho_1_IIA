@@ -2,6 +2,51 @@ from funcoes_auxiliares import print_mapa
 from funcoes_auxiliares import print_caminho
 
 def busca_custo_uniforme(grid, pos_inicial, pos_tesouro):
+    # definir os vizinhos
+    vizinhos = []
+    x = pos_inicial[1]
+    y = pos_inicial[0]
+
+    if y > 0: 
+        vizinhos.append((y - 1, x))
+    if y < len(grid) - 1:    
+        vizinhos.append((y + 1, x))
+    if x > 0: 
+        vizinhos.append((y, x - 1))
+    if x < len(grid) - 1:    
+        vizinhos.append((y, x + 1))
+
+    menor_custo = 999999
+    # calcular o custo p cada vizinho
+    for i in range(0, len(vizinhos)):
+        x = vizinhos[i][1]
+        y = vizinhos[i][0]
+        
+        match(grid[y][x]):
+            case '.':
+                if menor_custo > 1:
+                    x_no_menor_custo = x
+                    y_no_menor_custo = y
+            case 'L':
+                if menor_custo > 1:
+                    x_no_menor_custo = x
+                    y_no_menor_custo = y
+                
+            case '#':
+                if menor_custo > 1:
+                    x_no_menor_custo = x
+                    y_no_menor_custo = y
+            case 'T':
+                    x_no_menor_custo = x
+                    y_no_menor_custo = y
+            case 'I':
+                if menor_custo > 1:
+                    x_no_menor_custo = x
+                    y_no_menor_custo = y
+
+            
+    # repetir o processo p os nós vizinhos
+    
     pass
 
 def busca_gulosa(grid, pos_inicial, pos_tesouro):
@@ -27,7 +72,7 @@ pos_tesouro = (6, 9)
 
 print_mapa(grid)
 
-# caminho_bcu = busca_custo_uniforme(grid, pos_inicial, pos_tesouro)
+caminho_bcu = busca_custo_uniforme(grid, pos_inicial, pos_tesouro)
 # caminho_gulosa = busca_gulosa(grid, pos_inicial, pos_tesouro)
 # caminho_a_estrela = busca_a_estrela(grid, pos_inicial, pos_tesouro)
 
