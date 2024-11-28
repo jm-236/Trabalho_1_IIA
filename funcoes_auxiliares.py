@@ -92,4 +92,3 @@ def print_caminho(grid, caminho, title=""):
             grid_copia[x][y] = '*'
 
     print_mapa(grid_copia, caminho, title)
-
